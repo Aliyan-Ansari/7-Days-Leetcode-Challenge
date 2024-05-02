@@ -3,19 +3,18 @@
  * @param {number} capacity
  * @return {number}
  */
-var wateringPlants = function(plants, capacity) {
+var wateringPlants = function (plants, capacity) {
     let waterAvailable = capacity;
     let steps = 0;
-    
-    for(let i = 0; i < plants.length; i++) {
-        
-        if (waterAvailable < plants[i]) {
+
+    plants.forEach((value, index) => {
+        if (waterAvailable < value) {
             waterAvailable = capacity;
-            steps += i*2;
+            steps += index * 2;
         }
-        
-        waterAvailable -= plants[i];
+        waterAvailable -= value;
         steps++
-    }
+    });
+
     return steps;
 };
